@@ -31,8 +31,8 @@ Some tests was made:
 
 ### First img Test
 
-* Initial DT: 2023-08-22
-   Compiled img file 2023-09-27 and tested in 2023-09-2?
+* Initial DT: 2023-10-28
+   Compiled img file 2023-10-29 and tested in 2023-10-2?
 
 - MT6789 - A12
   - Status: booted??
