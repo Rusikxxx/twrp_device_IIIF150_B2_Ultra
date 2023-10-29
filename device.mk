@@ -85,7 +85,7 @@ PRODUCT_PACKAGES += \
 #    android.system.keystore2
 
 # Keymint
-PRODUCT_PACKAGES += \
+#PRODUCT_PACKAGES += \
 #    android.hardware.security.keymint \
 #    android.hardware.security.secureclock \
 #    android.hardware.security.sharedsecret
@@ -96,7 +96,7 @@ PRODUCT_PACKAGES += \
 
 # Keymaster
 #PRODUCT_PACKAGES += \
-    android.hardware.keymaster@4.1
+#    android.hardware.keymaster@4.1
 
 # Additional target Libraries
 #TARGET_RECOVERY_DEVICE_MODULES += \
