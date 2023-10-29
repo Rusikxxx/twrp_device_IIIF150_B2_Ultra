@@ -10,6 +10,7 @@ ASW2600_YO_2201_T2007.zip - ASW2600_YO_2201_T2007 -- ASW2600_YO_2201_V2007
 ## Device
 
 Specs [here](https://www.devicespecifications.com/en/model/1c045dcb)
+
 https://www.kimovil.com/en/where-to-buy-iiif150-b2-ultra
 
 Description | Specification
