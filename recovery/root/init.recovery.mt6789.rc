@@ -1,5 +1,6 @@
 import /microtrust.rc
 import /init.recovery.project.rc
+#import /microtrust.bp_kmsetkey_ca.rc
 
 on init
     setprop sys.usb.configfs 1
@@ -7,11 +8,13 @@ on init
     setprop sys.usb.ffs.aio_compat 0
     export LD_LIBRARY_PATH /system/lib64:/vendor/lib64:/vendor/lib64/hw
     setprop crypto.ready 1
- 
-    mkdir /mnt/vendor/persist
-    mount ext4 /dev/block/by-name/persist /mnt/vendor/persist
 
 on fs
+    mkdir /mnt/vendor 0700 root root
+    mkdir /mnt/vendor/persist 0700 root root
+    mount ext4 /dev/block/by-name/persist /mnt/vendor/persist
+    
+property:ro.crypto.state=encrypted && property:ro.crypto.type=file
     install_keyring
 
 # We need vold early for metadata encryption
@@ -76,32 +79,64 @@ service vendor.keymint-beanpod /vendor/bin/hw/android.hardware.security.keymint@
     user nobody
     seclabel u:r:recovery:s0
 
+# Reference: https://github.com/2e-dev/android_device_mediatek_sepolicy/blob/q-release/bsp/non_plat/hal_thhdevice.te
+# https://github.com/2e-dev/android_device_mediatek_sepolicy/blob/q-release/bsp/non_plat/init_thh.te
+# =============allow teei daemon and init_thh daemon to set property  ==============
+# vendor.soter.teei.   u:object_r:soter_teei_prop:s0
+#on property:soter.teei.init=INIT_OK
+#    start init_thh_service
+service init_thh_service /vendor/bin/init_thh startload
+    class late_start
+    user root
+    group root
+    oneshot
+    seclabel u:r:recovery:s0
+
+service thh-2-0 /vendor/bin/hw/vendor.microtrust.hardware.thh@2.0-service
+    class late_start
+    user root
+    group root
+    seclabel u:r:recovery:s0
+
 on property:crypto.ready=1
     start vendor.keymint-beanpod
+
+on property:property:vendor.sys.listeners.registered=true
+    start vendor.keymint-beanpod
+    start vendor.gatekeeper-1-0
 
 on property:hwservicemanager.ready=true
     start vendor.keymint-beanpod
     start vendor.gatekeeper-1-0
+    start keymaster_attestation-1-1
 
 on property:ro.crypto.state=unsupported
     stop teei_daemon
     stop vendor.keymint-beanpod
     stop vendor.gatekeeper-1-0
+    stop init_thh_service
+    stop thh-2-0
 
 on property:ro.crypto.state=unencrypted
     stop teei_daemon
     stop vendor.keymint-beanpod
     stop vendor.gatekeeper-1-0
+    stop init_thh_service
+    stop thh-2-0
 
 on property:twrp.decrypt.done=true
     stop teei_daemon
     stop vendor.keymint-beanpod
     stop vendor.gatekeeper-1-0
+    stop init_thh_service
+    stop thh-2-0
 
 on property:crypto.ready=0
     stop teei_daemon
     stop vendor.keymint-beanpod
     stop vendor.gatekeeper-1-0
+    stop init_thh_service
+    stop thh-2-0
 
 on boot
     start health-hal-2-1
