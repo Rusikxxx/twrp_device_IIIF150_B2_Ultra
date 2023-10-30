@@ -32,7 +32,7 @@ Some tests was made:
 ### First img Test
 
 * Initial DT: 2023-10-28
-   Compiled img file 2023-10-29 and tested in 2023-10-2?
+   Compiled img file 2023-10-29 and tested in 2023-10-29
 
 - MT6789 - A12
   - Status: booted??
@@ -40,8 +40,8 @@ Some tests was made:
 
    - vendor_boot-B2_Ultra-2023mmdd.img => Working?? Not working?
   - [X] Working
-  - [ ] CPU/temperature correct
-  - [ ] Vibrator module not work
+  - [X] CPU/temperature correct
+  - [ ] Vibrator module - not work
 
 </p>
 </details>
@@ -49,11 +49,10 @@ Some tests was made:
 <details><summary>TWRP Pictures - Click to open</summary>
 <p>
 
-![Menu](https://github.com/lopestom/)
-![Backup](https://github.com/lopestom/)
-![Advanced](https://github.com/lopestom/)
-![Wipe](https://github.com/lopestom/)
-![Storage](https://github.com/lopestom/)
+![Menu](https://github.com/lopestom/twrp_device_IIIF150_B2_Ultra/releases/download/IIIF150_B2_Ultra/IMG_20231029_210244_976.jpg)
+![Backup](https://github.com/lopestom/twrp_device_IIIF150_B2_Ultra/releases/download/IIIF150_B2_Ultra/IMG_20231029_210301_908.jpg)
+
+![Storage](https://github.com/lopestom/twrp_device_IIIF150_B2_Ultra/releases/download/IIIF150_B2_Ultra/IMG_20231029_210319_016.jpg)
 </p>
 </details>
 
