@@ -49,5 +49,5 @@ void model_property_override(const std::string& device, const std::string& model
 }
 
 void vendor_load_properties() {
-    model_property_override("B2_Ultra", "B2 Ultra");
+    model_property_override("B2_Ultra", "B2_Ultra");
 }
