@@ -229,7 +229,7 @@ TW_EXCLUDE_DEFAULT_USB_INIT := true
 TW_INCLUDE_RESETPROP := true
 TW_INCLUDE_LIBRESETPROP :=true
 #TW_INCLUDE_REPACKTOOLS := true
-TW_EXCLUDE_REPACKTOOLS := true
+#TW_EXCLUDE_REPACKTOOLS := true
 
 # Debug
 TARGET_USES_LOGD := true
@@ -243,5 +243,6 @@ BOARD_VNDK_VERSION := current
 #TW_SUPPORT_INPUT_AIDL_HAPTICS := true
 #TW_SUPPORT_INPUT_AIDL_HAPTICS_FQNAME := "IVibrator/vibratorfeature"
 
-# Fix Touch Screen
-TW_LOAD_VENDOR_MODULES := "mtk_panel_ext.ko nt36672c.ko panel-alpha-jdi-nt36672e-cphy-vdo.ko"
+# Load Modules
+#TW_LOAD_VENDOR_MODULES := "mtk_panel_ext.ko nt36672c.ko panel-alpha-jdi-nt36672e-cphy-vdo.ko"
+TW_LOAD_VENDOR_MODULES := true
