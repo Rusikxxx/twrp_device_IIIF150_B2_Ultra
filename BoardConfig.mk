@@ -246,3 +246,5 @@ BOARD_VNDK_VERSION := current
 # Load Modules
 #TW_LOAD_VENDOR_MODULES := "mtk_panel_ext.ko nt36672c.ko panel-alpha-jdi-nt36672e-cphy-vdo.ko"
 TW_LOAD_VENDOR_MODULES := true
+
+TW_BACKUP_EXCLUSIONS := /data/fonts
