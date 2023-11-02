@@ -3,6 +3,7 @@ ro.postinstall.fstab.prefix=/system
 
 # USB MTP
 ro.sys.usb.storage.type=mtp
+persist.sys.fuse.passthrough.enable=true
 
 # identity
 Build.BRAND=MTK
