@@ -29,9 +29,8 @@ jobs:
     - name: Check Out
       uses: actions/checkout@main
 
-    - name: Set Variables
-      run: |
-        echo "::set-output name=date::$(date +%F)"
+    - name: Set output
+      run: echo "name=date" >> $GITHUB_OUTPUT
       id: var
 
     - name: Prepare Environment
