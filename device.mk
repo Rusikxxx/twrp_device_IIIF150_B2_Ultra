@@ -65,10 +65,10 @@ PRODUCT_PACKAGES_DEBUG += \
     bootctrl
 
 # Fastbootd
-#PRODUCT_PACKAGES += \
-#    android.hardware.fastboot@1.1-impl-mock \
-#    android.hardware.fastboot@1.1-impl-mock.recovery \
-#    fastbootd
+PRODUCT_PACKAGES += \
+    android.hardware.fastboot@1.1-impl-mock \
+    android.hardware.fastboot@1.1-impl-mock.recovery \
+    fastbootd
 
 # Health
 PRODUCT_PACKAGES += \
@@ -81,18 +81,18 @@ PRODUCT_PACKAGES += \
     mtk_plpath_utils.recovery
 
 # Keystore
-#PRODUCT_PACKAGES += \
-#    android.system.keystore2
+PRODUCT_PACKAGES += \
+    android.system.keystore2
 
 # Keymint
-#PRODUCT_PACKAGES += \
-#    android.hardware.security.keymint \
-#    android.hardware.security.secureclock \
-#    android.hardware.security.sharedsecret
+PRODUCT_PACKAGES += \
+    android.hardware.security.keymint \
+    android.hardware.security.secureclock \
+    android.hardware.security.sharedsecret
 
 # Drm
 #PRODUCT_PACKAGES += \
-#    android.hardware.drm@1.4
+    android.hardware.drm@1.4
 
 # Keymaster
 #PRODUCT_PACKAGES += \
