@@ -14,6 +14,6 @@
 # limitations under the License.
 #
 
-PRODUCT_MAKEFILES := $(LOCAL_DIR)/twrp_B2_Ultra.mk
+PRODUCT_MAKEFILES := $(LOCAL_DIR)/twrp_B2_Ultra_eea.mk
 
-COMMON_LUNCH_CHOICES := twrp_B2_Ultra-eng
+COMMON_LUNCH_CHOICES := twrp_B2_Ultra_eea-eng
