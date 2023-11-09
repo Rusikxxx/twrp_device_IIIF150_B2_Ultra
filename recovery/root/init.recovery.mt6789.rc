@@ -1,4 +1,6 @@
 import /init.recovery.project.rc
+import /microtrust.rc
+import /decrypt.rc
 
 on init
     setprop sys.usb.configfs 1
@@ -27,3 +29,5 @@ on boot
     start health-hal-2-1
     start boot-hal-1-2
     setprop sys.usb.config adb
+
+    
