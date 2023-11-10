@@ -103,8 +103,8 @@ PRODUCT_PACKAGES += \
 #    android.hardware.keymaster@4.1
     
 # Init
-TARGET_INIT_VENDOR_LIB := libinit_B2_Ultra
-TARGET_RECOVERY_DEVICE_MODULES := libinit_B2_Ultra
+#TARGET_INIT_VENDOR_LIB := libinit_B2_Ultra
+#TARGET_RECOVERY_DEVICE_MODULES := libinit_B2_Ultra
 
 #TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \
 #    $(TARGET_OUT_SHARED_LIBRARIES)/android.hardware.keymaster@4.1.so
