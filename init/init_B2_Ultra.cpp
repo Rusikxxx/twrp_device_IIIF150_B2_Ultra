@@ -25,7 +25,7 @@ void property_override(const std::string& name, const std::string& value)
     }
 }
 
-void model_property_override(const std::string& device, const std::string& model, const std::string& name))
+void model_property_override(const std::string& device, const std::string& model, const std::string& name)
 {
     property_override("ro.product.device", device);
     property_override("ro.product.odm.device", device);
