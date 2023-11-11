@@ -34,8 +34,8 @@
 # Subscriber Identification Module (SIM)
 /protect_f          ext4      /dev/block/by-name/protect1             flags=display="protect_f"
 /protect_s          ext4      /dev/block/by-name/protect2             flags=display="protect_s"
-/protect_f          emmc      /dev/block/by-name/protect1             flags=display="protect_f_Image";backup=1;flashimg=1
-/protect_s          emmc      /dev/block/by-name/protect2             flags=display="protect_s_Image";backup=1;flashimg=1
+/protect_f_image           emmc      /dev/block/by-name/protect1             flags=display="protect_f_Image";backup=1;flashimg=1
+/protect_s_image           emmc      /dev/block/by-name/protect2             flags=display="protect_s_Image";backup=1;flashimg=1
 
 # Factory Reset Protection (FRP)
 /persistent         emmc      /dev/block/by-name/frp                  flags=display="persistent";backup=1;flashimg=1
@@ -72,7 +72,7 @@
 /pi_img             emmc      /dev/block/by-name/pi_img               flags=display="pi_img"
 /mcupm1             emmc      /dev/block/by-name/mcupm1               flags=display="mcupm1"
 /mcupm2             emmc      /dev/block/by-name/mcupm2               flags=display="mcupm2"
-/efuse emmc /dev/block/by-name/efuse 
+/efuse      emmc      /dev/block/by-name/efuse 
 
 # External-Devices (SDCARD | OTG)
 /external_sd    auto     /dev/block/mmcblk0p1  /dev/block/mmcblk0     flags=display="Micro_SDcard";storage;wipeingui;removable;fsflags="utf8"
