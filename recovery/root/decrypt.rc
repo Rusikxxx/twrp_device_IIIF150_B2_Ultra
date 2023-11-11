@@ -1,5 +1,6 @@
 on init
     export LD_LIBRARY_PATH /system/lib64:/vendor/lib64:/vendor/lib64/hw:/system/lib64/hw
+    export LD_LIBRARY_PATH /vendor/bin:/system/bin
     mkdir /mnt/vendor 0755 system system
     mkdir /mnt/vendor/protect_f 0770 system system
     mkdir /mnt/vendor/protect_s 0770 system system
@@ -38,13 +39,13 @@ service keystore /system/bin/keystore /tmp/misc/keystore
 service vendor.gatekeeper-1-0 /vendor/bin/hw/android.hardware.gatekeeper@1.0-service
     user root
     group root
-    setenv LD_LIBRARY_PATH /system/lib64:/vendor/lib64:/vendor/lib64/hw:/system/lib64/hw
     disabled
     seclabel u:r:recovery:s0
 
+#    setenv LD_LIBRARY_PATH /system/lib64:/vendor/lib64:/vendor/lib64/hw:/system/lib64/hw
+
 service vendor.keymint-beanpod /vendor/bin/hw/android.hardware.security.keymint@1.0-service.beanpod
     user nobody
-    setenv LD_LIBRARY_PATH /system/lib64:/vendor/lib64:/vendor/lib64/hw:/system/lib64/hw
     seclabel u:r:recovery:s0
 
 on property:crypto.ready=1
