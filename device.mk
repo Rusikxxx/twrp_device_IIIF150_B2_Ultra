@@ -64,7 +64,8 @@ PRODUCT_PACKAGES += \
     android.hardware.boot@1.2-mtkimpl.recovery
 
 PRODUCT_PACKAGES_DEBUG += \
-    bootctrl
+    bootctrl \
+    bootctrl.recovery \
 
 # Fastbootd
 PRODUCT_PACKAGES += \
