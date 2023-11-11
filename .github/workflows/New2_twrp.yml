@@ -14,9 +14,9 @@ on:
 
 env:
   MANIFEST: https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp -b twrp-12.1
-  DEVICE: B2_Ultra_eea
+  DEVICE: B2_Ultra
   DT_LINK: https://github.com/lopestom/twrp_device_IIIF150_B2_Ultra
-  DT_PATH: device/IIIF150/B2_Ultra_eea
+  DT_PATH: device/IIIF150/B2_Ultra
   TARGET: vendorbootimage
   TZ: Asia/manila
 #  DT_BRANCH: WIP
@@ -73,7 +73,7 @@ jobs:
     - name: Checkout device tree
       uses: actions/checkout@v2
       with:
-       path: twrp/device/IIIF150/B2_Ultra_eea
+       path: twrp/device/IIIF150/B2_Ultra
 
     - name: Set Swap Space
       uses: pierotofy/set-swap-space@master
