@@ -31,7 +31,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
 $(call inherit-product, vendor/twrp/config/common.mk)
 
 # Device specific configs.
-$(call inherit-product, device/IIIF150/B2_Ultra/device.mk)
+$(call inherit-product, device/IIIF150/B2_Ultra_eea/device.mk)
 
 ## Device identifier. This must come after all inclusions.
 PRODUCT_DEVICE := B2_Ultra
@@ -39,7 +39,7 @@ PRODUCT_NAME := twrp_B2_Ultra_eea
 PRODUCT_BRAND := IIIF150
 PRODUCT_MODEL := B2 Ultra
 PRODUCT_MANUFACTURER := ANT DAO TECHNOLOGY LIMITED
-PRODUCT_RELEASE_NAME := B2_Ultra
+PRODUCT_RELEASE_NAME := B2_Ultra_eea
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
     TARGET_DEVICE=B2_Ultra \
