@@ -22,6 +22,9 @@ DEVICE_PATH := device/IIIF150/B2_Ultra_eea
 # For building with minimal manifest
 ALLOW_MISSING_DEPENDENCIES := true
 
+# Build Rules
+BUILD_BROKEN_DUP_RULES := true
+
 # Relax ELF prebuilts in PRODUCT_COPY_FILES rule
 BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
 
