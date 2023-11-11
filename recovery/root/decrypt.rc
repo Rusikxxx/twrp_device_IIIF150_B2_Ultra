@@ -15,7 +15,7 @@ on init
     symlink /mnt/vendor/protect_s /vendor/protect_s
     symlink /mnt/vendor/nvcfg /vendor/nvcfg
     symlink /mnt/vendor/nvdata /vendor/nvdata
-
+    setprop crypto.ready 1
 
 on post-fs
 on property:ro.crypto.state=encrypted && property:ro.crypto.type=file
@@ -47,9 +47,8 @@ service vendor.keymint-beanpod /vendor/bin/hw/android.hardware.security.keymint@
     setenv LD_LIBRARY_PATH /system/lib64:/vendor/lib64:/vendor/lib64/hw:/system/lib64/hw
     seclabel u:r:recovery:s0
 
-on property:vendor.sys.listeners.registered=true
+on property:crypto.ready=1
     start vendor.keymint-beanpod
-    start vendor.gatekeeper-1-0
 
 on property:vendor.sys.listener.registered=true
     start vendor.keymint-beanpod
