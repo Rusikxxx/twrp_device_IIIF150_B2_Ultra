@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 
-DEVICE_PATH := device/IIIF150/B2_Ultra_eea
+DEVICE_PATH := device/IIIF150/B2_Ultra
 
 # Build Hack
 #BUILD_BROKEN_DUP_RULES := true
