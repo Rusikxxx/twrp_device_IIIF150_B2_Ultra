@@ -14,36 +14,37 @@
 # limitations under the License.
 #
 
-# Configure launch_with_vendor_ramdisk.mk
-$(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/launch_with_vendor_ramdisk.mk)
+# Configure base.mk
+$(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
 
 # Configure core_64_bit.mk
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 
-# Inherit from those products. Most specific first.
-#$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
+# Configure launch_with_vendor_ramdisk.mk
+$(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/launch_with_vendor_ramdisk.mk)
 
-# Installs gsi keys into ramdisk, to boot a developer GSI with verified boot.
-$(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
+# Configure emulated_storage.mk
+$(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
 
-# Inherit from our custom product configuration.
+# Configure twrp config common.mk
 $(call inherit-product, vendor/twrp/config/common.mk)
 
-# Device specific configs.
+# Device specific configs
 $(call inherit-product, device/IIIF150/B2_Ultra/device.mk)
 
-## Device identifier. This must come after all inclusions.
+# Device identifier
 PRODUCT_DEVICE := B2_Ultra
 PRODUCT_NAME := twrp_B2_Ultra_eea
 PRODUCT_BRAND := IIIF150
 PRODUCT_MODEL := B2 Ultra
 PRODUCT_MANUFACTURER := ANT DAO TECHNOLOGY LIMITED
-PRODUCT_RELEASE_NAME := B2_Ultra_eea
 
-PRODUCT_BUILD_PROP_OVERRIDES += \
-    TARGET_DEVICE=B2_Ultra \
-    PRODUCT_NAME=B2_Ultra_eea \
-    PRIVATE_BUILD_DESC="B2_Ultra_eea-user 12 SP1A.210812.016 1694058221 release-keys"
+# Hide Reflash TWRP
+PRODUCT_PROPERTY_OVERRIDES += ro.twrp.vendor_boot=true
 
-BUILD_FINGERPRINT := IIIF150/B2_Ultra_eea/B2_Ultra:12/SP1A.210812.016/1694058221:user/release-keys
+#PRODUCT_BUILD_PROP_OVERRIDES += \
+#    TARGET_DEVICE=B2_Ultra \
+#    PRODUCT_NAME=B2_Ultra_eea \
+#    PRIVATE_BUILD_DESC="B2_Ultra_eea-user 12 SP1A.210812.016 1694058221 release-keys"
+
+#BUILD_FINGERPRINT := IIIF150/B2_Ultra_eea/B2_Ultra:12/SP1A.210812.016/1694058221:user/release-keys

@@ -14,79 +14,77 @@
 # limitations under the License.
 #
 LOCAL_PATH := device/IIIF150/B2_Ultra
+
+DEVICE_PATH := device/IIIF150/B2_Ultra
+
 # API
 PRODUCT_SHIPPING_API_LEVEL := 31
-PRODUCT_TARGET_VNDK_VERSION := 32
+PRODUCT_TARGET_VNDK_VERSION := 31
 
-# Dynamic
-PRODUCT_USE_DYNAMIC_PARTITIONS := true
-
-# Enable project quotas and casefolding for emulated storage without sdcardfs - SDCard replacement functionality
-$(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
-
-# Virtual A/B
-ENABLE_VIRTUAL_AB := true
-$(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota.mk)
-
+# A/B
 AB_OTA_UPDATER := true
-AB_OTA_PARTITIONS := \
+AB_OTA_PARTITIONS += \
     boot \
     dtbo \
     system \
-    system_ext \
     product \
     vendor \
-    vendor_dlkm \
     odm \
     odm_dlkm \
     vbmeta \
+    vendor_boot \
+    vendor_dlkm \
     vbmeta_system \
     vbmeta_vendor
     
-# Update engine
 PRODUCT_PACKAGES += \
-    otapreopt_script \
-    checkpoint_gc \
-    cppreopts.sh \
     update_engine \
+    update_engine_sideload \
     update_verifier \
-    update_engine_sideload
+    checkpoint_gc
 
 AB_OTA_POSTINSTALL_CONFIG += \
     RUN_POSTINSTALL_system=true \
-    POSTINSTALL_PATH_system=system/bin/otapreopt_script \
+    POSTINSTALL_PATH_system=system/bin/mtk_plpath_utils \
     FILESYSTEM_TYPE_system=ext4 \
     POSTINSTALL_OPTIONAL_system=true
 
-# Boot control HAL - Bootctrl
+AB_OTA_POSTINSTALL_CONFIG += \
+    RUN_POSTINSTALL_vendor=true \
+    POSTINSTALL_PATH_vendor=bin/checkpoint_gc \
+    FILESYSTEM_TYPE_vendor=ext4 \
+    POSTINSTALL_OPTIONAL_vendor=true
+
+# Additional Target Libraries
+TARGET_RECOVERY_DEVICE_MODULES += \
+    android.hardware.keymaster@4.1
+
+TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \
+    $(TARGET_OUT_SHARED_LIBRARIES)/android.hardware.keymaster@4.1.so
+
+# Bootctrl
 PRODUCT_PACKAGES += \
-    android.hardware.boot@1.2-service \
     android.hardware.boot@1.2-mtkimpl \
     android.hardware.boot@1.2-mtkimpl.recovery
 
 PRODUCT_PACKAGES_DEBUG += \
-    bootctrl \
-    bootctrl.recovery \
+    bootctrl
 
-# Fastbootd
+# Dynamic
+PRODUCT_USE_DYNAMIC_PARTITIONS := true
+
+# Drm
 PRODUCT_PACKAGES += \
-    android.hardware.fastboot@1.1-impl-mock \
-    android.hardware.fastboot@1.1-impl-mock.recovery \
-    fastbootd
+    android.hardware.drm@1.4
 
 # Health
 PRODUCT_PACKAGES += \
     android.hardware.health@2.1-impl \
     android.hardware.health@2.1-service
 
-# Build MT-PL-Utils
+# Keymaster
 PRODUCT_PACKAGES += \
-    mtk_plpath_utils \
-    mtk_plpath_utils.recovery
-
-# Keystore
-PRODUCT_PACKAGES += \
-    android.system.keystore2
+    android.hardware.keymaster@4.1
 
 # Keymint
 PRODUCT_PACKAGES += \
@@ -94,21 +92,18 @@ PRODUCT_PACKAGES += \
     android.hardware.security.secureclock \
     android.hardware.security.sharedsecret
 
-# Drm
-#PRODUCT_PACKAGES += \
-    android.hardware.drm@1.4
+# Keystore2
+PRODUCT_PACKAGES += \
+    android.system.keystore2
 
-# Keymaster
-#PRODUCT_PACKAGES += \
-#    android.hardware.keymaster@4.1
+# Mtk plpath utils
+PRODUCT_PACKAGES += \
+    mtk_plpath_utils \
+    mtk_plpath_utils.recovery
 
-# Additional target Libraries
-#TARGET_RECOVERY_DEVICE_MODULES += \
-#    android.hardware.keymaster@4.1
-    
-# Init
-#TARGET_INIT_VENDOR_LIB := libinit_B2_Ultra
-#TARGET_RECOVERY_DEVICE_MODULES := libinit_B2_Ultra
+# Otacert
+PRODUCT_EXTRA_RECOVERY_KEYS += \
+    $(DEVICE_PATH)/security/alps_releasekey
 
-#TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \
-#    $(TARGET_OUT_SHARED_LIBRARIES)/android.hardware.keymaster@4.1.so
+# Soong namespaces
+PRODUCT_SOONG_NAMESPACES += $(DEVICE_PATH)
