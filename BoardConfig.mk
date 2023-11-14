@@ -107,6 +107,8 @@ BOARD_USERDATAIMAGE_FILE_SYSTEM_TYPE := f2fs
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 
+TARGET_COPY_OUT_PRODUCT := product
+TARGET_COPY_OUT_VENDOR := vendor
 
 # From lopestom -- vendor_dlkm & odm_dlkm partition
 # Reference: https://source.android.com/docs/core/architecture/partitions/vendor-odm-dlkm-partition#build-support
