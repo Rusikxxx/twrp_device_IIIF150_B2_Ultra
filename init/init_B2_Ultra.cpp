@@ -30,6 +30,6 @@ void vendor_load_properties()
         property_override(string("ro.product.") + prop + string("model"), "B2 Ultra");
         property_override(string("ro.product.") + prop + string("manufacturer"), "ANT DAO TECHNOLOGY LIMITED");
     }
-    property_override("ro.bootimage.build.date.utc", "1695405548");
-    property_override("ro.build.date.utc", "1695405548");
+    property_override("ro.bootimage.build.date.utc", "1687231627");
+    property_override("ro.build.date.utc", "1695408841");
 }
