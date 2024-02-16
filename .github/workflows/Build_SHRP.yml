@@ -84,7 +84,15 @@ jobs:
       run: |
        PATH=~/bin:$PATH
        cd twrp
-       export ALLOW_MISSING_DEPENDENCIES=true && source build/envsetup.sh &&lunch twrp_B2_Ultra_eea-eng && mka $TARGET -j$(nproc --all)
+       export ALLOW_MISSING_DEPENDENCIES=true
+       source build/envsetup.sh
+       repopick 5405
+       repopick 5540
+       repopick 5493
+       repopick 5639
+       repopick 5653
+       lunch twrp_B2_Ultra_eea-eng
+       mka $TARGET -j$(nproc --all)
        cp  out/target/product/B2_Ultra/vendor_boot.img    out/target/product/B2_Ultra/SHRP-B2_Ultra_eea-$(date +"%Y%m%d").img  
              
     - name: Release recovery image
