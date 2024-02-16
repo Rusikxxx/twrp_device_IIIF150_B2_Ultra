@@ -193,3 +193,25 @@ TW_LOAD_VENDOR_MODULES := true
 
 TW_CUSTOM_CPU_TEMP_PATH := /sys/devices/virtual/thermal/thermal_zone29/temp
 TARGET_USE_CUSTOM_LUN_FILE_PATH := "/config/usb_gadget/g1/functions/mass_storage.usb0/lun.%d/file"
+
+#########################
+# SHRP Build Flags SHRP #
+
+SHRP_DEVICE_CODE := B2_Ultra
+SHRP_PATH := device/IIIF150/$(SHRP_DEVICE_CODE)
+SHRP_MAINTAINER := lopestom
+SHRP_REC_TYPE := Treble
+SHRP_DEVICE_TYPE := A/B
+#SHRP_REC := /dev/block/by-name/boot
+#SHRP_HAS_RECOVERY_PARTITION := false
+SHRP_AB := true
+
+SHRP_EDL_MODE := 0
+SHRP_INTERNAL := /sdcard
+SHRP_EXTERNAL := /external_sd
+SHRP_OTG := /usb_otg
+SHRP_FLASH := 0
+SHRP_NOTCH := true
+SHRP_DARK := true
+
+#########################
