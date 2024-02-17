@@ -5,9 +5,20 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
-
+    if: github.event.repository.owner.id == github.event.sender.id
+    runs-on: ubuntu-20.04
+    permissions:
+      contents: write
     steps:
+ 
+    # You might want to Checkout your repo first, but not mandatory
+    - name: Check Out
+      uses: actions/checkout@v3
+
+    # Cleanup The Actions Workspace Using Custom Composite Run Actions
+    - name: Cleanup
+      uses: rokibhasansagar/slimhub_actions@main
+
     - name: Remove Useless Package
       run: |
         docker rmi `docker images -q`
@@ -16,6 +27,7 @@ jobs:
         sudo apt -y autoremove --purge
         sudo apt -y autoclean
         sudo apt clean
+      
     - name: Maximize Build Space
       uses: easimon/maximize-build-space@master
       with:
@@ -34,27 +46,37 @@ jobs:
         echo "::set-output name=date::$(date +%F)"
       id: var
 
+    - name: Initialize workspace
+      run: |
+        mkdir workspace
+        cd workspace
+        echo "workspace-folder=$(pwd)" >> $GITHUB_OUTPUT
+
     - name: Prepare Environment
       run: |
         export HOME=${GITHUB_WORKSPACE}
         cd ${GITHUB_WORKSPACE}
-        sudo apt -y install git aria2 
+        sudo apt -y install git aria2 -y
         git clone https://gitlab.com/OrangeFox/misc/scripts
         cd scripts
         sudo bash setup/android_build_env.sh
-        sudo bash setup/install_android_sdk.sh || true
+        sed -i 's/cd -/cd ../g' setup/install_android_sdk.sh
+        sudo bash setup/install_android_sdk.sh
+
     - name: Init Repo
       run: |
         mkdir ${GITHUB_WORKSPACE}/workspace
         cd ${GITHUB_WORKSPACE}/workspace
         git config --global user.name "lopestom"
         git config --global user.email "guillopes2002@gmail.com"
-        repo init --depth=1 -u https://github.com/SHRP/manifest.git -b shrp-12.1
+        repo init --depth=1 -u https://github.com/SHRP/manifest -b shrp-12.1
+
     - name: Repo Sync
       run: |
         cd ${GITHUB_WORKSPACE}/workspace
         repo sync -j$(nproc --all)
         ls -al
+
     - name: Repopick Patches
       run: |
         cd ${GITHUB_WORKSPACE}/workspace
@@ -64,16 +86,27 @@ jobs:
         repopick 5493
         repopick 5639
         repopick 5653
+
     - name: Clone Device Tree
       run: |
         cd ${GITHUB_WORKSPACE}/workspace
         git clone https://github.com/lopestom/twrp_device_IIIF150_B2_Ultra -b shrp-12.1 ./device/IIIF150/B2_Ultra
+
+    - name: Set Swap Space
+      uses: pierotofy/set-swap-space@master
+      with:
+        swap-size-gb: 12
+ 
     - name: Building
       run: |
         cd ${GITHUB_WORKSPACE}/workspace
+        set +e
         source build/envsetup.sh
+        export ALLOW_MISSING_DEPENDENCIES=true
+        set -e
         lunch twrp_B2_Ultra_eea-eng
         mka vendorbootimage -j$(nproc --all)
+        
     - name: Upload Artifact
       uses: actions/upload-artifact@v3
       with:
