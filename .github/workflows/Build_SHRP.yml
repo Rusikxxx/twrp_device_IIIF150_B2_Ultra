@@ -68,7 +68,6 @@ jobs:
        cd twrp
        repo init -u $MANIFEST --depth=1
        repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
-       rm -rf .repo
 
     - name: Repopick Patches
       run: |
