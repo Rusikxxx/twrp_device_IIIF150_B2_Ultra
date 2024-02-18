@@ -122,7 +122,7 @@ jobs:
         source build/envsetup.sh
         export ALLOW_MISSING_DEPENDENCIES=true
         lunch ${{ github.event.inputs.MAKEFILE_NAME }}-eng && make clean && make ${{ github.event.inputs.BUILD_TARGET }}image -j$(nproc --all)
-        cp  workspace/out/target/product/${{ github.event.inputs.DEVICE_NAME }}/vendor_boot.img    workspace/out/target/product/${{ github.event.inputs.DEVICE_NAME }}/vendor_boot-B2_Ultra_Mod-$(date +"%Y%m%d").img
+        cp  out/target/product/${{ github.event.inputs.DEVICE_NAME }}/vendor_boot.img    out/target/product/${{ github.event.inputs.DEVICE_NAME }}/vendor_boot-B2_Ultra_Mod-$(date +"%Y%m%d").img
       working-directory: ${{ steps.pwd.outputs.workspace-folder }}
 
     - name: Upload to Release
