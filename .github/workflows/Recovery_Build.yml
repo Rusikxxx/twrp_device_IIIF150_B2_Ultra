@@ -100,11 +100,6 @@ jobs:
       run: |
         repo sync -j$(nproc --all) --force-sync
       working-directory: workspace
-      
-    - name: Clone device tree
-      run: |
-        git clone ${{ github.event.inputs.DEVICE_TREE_URL }} -b ${{ github.event.inputs.DEVICE_TREE_BRANCH }} ./${{ github.event.inputs.DEVICE_PATH }}
-      working-directory: ${{ steps.pwd.outputs.workspace-folder }}
 
     - name: Sync Device Dependencies
       run: |
@@ -120,7 +115,7 @@ jobs:
     - name: Checkout device tree
       uses: actions/checkout@v4
       with:
-       path: device/IIIF150/B2_Ultra
+       path: workspace/device/IIIF150/B2_Ultra
 
     - name: Building recovery
       run: |
