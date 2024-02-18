@@ -108,7 +108,6 @@ jobs:
 
     - name: Sync Device Dependencies
       run: |
-        bash ${GITHUB_WORKSPACE}/scripts/convert.sh ${{ github.event.inputs.DEVICE_PATH }}/${{ steps.buildtree.outputs.value }}.dependencies
         repo sync -j$(nproc --all)
       working-directory: ${{ steps.pwd.outputs.workspace-folder }}
       continue-on-error: true
@@ -117,6 +116,11 @@ jobs:
       uses: pierotofy/set-swap-space@master
       with:
         swap-size-gb: 12
+
+    - name: Checkout device tree
+      uses: actions/checkout@v4
+      with:
+       path: device/IIIF150/B2_Ultra
 
     - name: Building recovery
       run: |
