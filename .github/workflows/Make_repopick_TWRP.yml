@@ -8,14 +8,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Remove Useless Package
-      run: |
-        docker rmi `docker images -q`
-        sudo rm -rf /usr/share/dotnet /etc/mysql /etc/php /etc/sudo apt/sources.list.d
-        sudo apt -y purge azure-cli ghc* zulu* llvm* firefox google* dotnet* powershell openjdk* mysql* php*
-        sudo apt -y autoremove --purge
-        sudo apt -y autoclean
-        sudo apt clean
+    # Cleanup The Actions Workspace Using Custom Composite Run Actions
+    - name: Cleanup
+      uses: rokibhasansagar/slimhub_actions@main
+      # That's it! Now use your normal steps
+      
     - name: Maximize Build Space
       uses: easimon/maximize-build-space@master
       with:
@@ -68,6 +65,11 @@ jobs:
       run: |
         cd ${GITHUB_WORKSPACE}/workspace
         git clone https://github.com/lopestom/twrp_device_IIIF150_B2_Ultra.git -b shrp-12.1 ./device/IIIF150/B2_Ultra
+
+    - name: Set Swap Space
+      uses: pierotofy/set-swap-space@master
+      with:
+        swap-size-gb: 12
 
     - name: Building
       run: |
