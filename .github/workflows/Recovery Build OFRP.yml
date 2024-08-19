@@ -136,6 +136,7 @@ jobs:
           fox_${{ inputs.MANIFEST_BRANCH }}/out/target/product/${{ inputs.DEVICE_NAME }}/*${{ inputs.DEVICE_NAME }}*
           fox_${{ inputs.MANIFEST_BRANCH }}/out/target/product/${{ inputs.DEVICE_NAME }}/obj/PACKAGING/vendor_ramdisk_fragments_intermediates/recovery.*
           fox_${{ inputs.MANIFEST_BRANCH }}/out/target/product/${{ inputs.DEVICE_NAME }}/ramdisk-recovery.*
+          fox_${{ inputs.MANIFEST_BRANCH }}/out/target/product/${{ inputs.DEVICE_NAME }}/*OFRP*zip
         name: |
           ${{ inputs.DEVICE_NAME }} (OrangeFox)
         tag_name: ${{ github.run_id }}
