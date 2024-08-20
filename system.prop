@@ -1,52 +1,17 @@
+####### generate by lopestom #######
 # Fstab
-#ro.postinstall.fstab.prefix=/system
-
+ro.postinstall.fstab.prefix=/system
 # USB MTP
 ro.sys.usb.storage.type=mtp
-
-# identity
-Build.BRAND=MTK
-#ro.vendor.mediatek.version.release=ASW2600_YO_2201_T2007
-#ro.product.name=B2_Ultra_eea
-#ro.product.model=B2 Ultra
-#ro.product.brand=IIIF150
-#ro.product.manufacturer=ANT DAO TECHNOLOGY LIMITED
-#ro.boot.serialno=7XKVZTQOS8Z5U4E6
-
-#ro.ai.ext.model=B2 Ultra
-#ro.ai.ext.vernumber=B2 Ultra_2201_V2007
-#ro.ai.extHWvernumber=Mainboard_P1
-#ro.ai.extmodel=B2 Ultra
-#ro.ai.extvernumber=B2 Ultra_2201_V2007
-#ro.ai.hardware=mt6789
-#ro.ai.hardwarever=P1
-#ro.ai.hw.version=Mainboard_P1
-#ro.ai.productid=ASW2600_YO_2201
-#ro.ai.projectid=ASW2600
-#ro.ai.rom.vernumber=ROM12.0.0
-#ro.ai.rom.version=AI UI 2.0.0
-#ro.ai.vernumber=ASW2600_YO_2201_V2007
-#ro.ai.znvernumber=ASW2600_YO_2201_T2007
-#ro.ai.common.mainboard.prop=ASW2600
+# MTK
+ro.vendor.mediatek.platform=MT6789
 # Crypto
 ro.crypto.volume.filenames_mode=aes-256-cts
-#
-ro.crypto.metadata.enabled=true
-ro.crypto.support_metadata_encrypt=true
-ro.crypto.uses_fs_ioc_add_encryption_key=true
 # TEE & Gatekeeper & Keymaster
 ro.vendor.mtk_tee_gp_support=1
 ro.vendor.mtk_svp_on_mtee_support=2
 ro.hardware.kmsetkey=beanpod
 ro.hardware.gatekeeper=beanpod
 ro.vendor.mtk_microtrust_tee_support=1
-
-# HideReflashTWRP
-ro.twrp.vendor_boot=true
-
-# MTK
-ro.vendor.mediatek.platform=MT6789
-ro.vendor.mtk_f2fs_enable=1
-ro.vendor.mtk_emmc_support=1
-ro.hardware.egl=meow
-ro.hardware.vulkan=mali
+keymaster_ver=4.1
+####### generate by lopestom #######
