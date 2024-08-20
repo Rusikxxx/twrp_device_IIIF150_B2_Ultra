@@ -144,5 +144,6 @@ jobs:
           Manifest: ${{ github.event.inputs.MANIFEST_BRANCH }}
           Device: ${{ github.event.inputs.DEVICE_NAME }}
           Target: ${{ github.event.inputs.BUILD_TARGET }}
+          DT Branch: ${{ github.event.inputs.DEVICE_TREE_BRANCH }}
       env:
         GITHUB_TOKEN: ${{ secrets.TEST }}
