@@ -49,10 +49,12 @@ Some tests was made:
 <details><summary>TWRP Pictures - Click to open</summary>
 <p>
 
-![Menu](https://github.com/lopestom/twrp_device_IIIF150_B2_Ultra/)
-![Backup](https://github.com/lopestom/twrp_device_IIIF150_B2_Ultra/)
+![Screenshot_2024-09-06-21-41-03_resized](https://github.com/user-attachments/assets/be1614e8-4025-47d5-aa7d-63755cb3e433)
+![Screenshot_2024-09-06-21-40-41_resized](https://github.com/user-attachments/assets/9ee1a2e4-c9b8-44cf-8998-17c82acaa6e1)
+![Screenshot_2024-09-06-21-43-36_resized](https://github.com/user-attachments/assets/f138583d-3c5b-4d52-9d14-4d9a7803ea6a)
+![Screenshot_2024-08-17-08-12-59_resized](https://github.com/user-attachments/assets/722c821a-4ea8-4483-83da-eaf4b4737dde)
+![Screenshot_2024-09-06-21-44-11_resized](https://github.com/user-attachments/assets/f5b9a524-1f87-445a-a371-2da336be5fac)
 
-![Storage](https://github.com/lopestom/twrp_device_IIIF150_B2_Ultra/)
 </p>
 </details>
 
