@@ -49,10 +49,9 @@ Some tests was made:
 <details><summary>TWRP Pictures - Click to open</summary>
 <p>
 
-![Menu](https://github.com/lopestom/twrp_device_IIIF150_B2_Ultra/)
-![Backup](https://github.com/lopestom/twrp_device_IIIF150_B2_Ultra/)
+![Screenshot_2024-08-20-22-22-02_resized](https://github.com/user-attachments/assets/74543844-d471-4981-89cc-bc30c201b08e)
+![Screenshot_2024-08-20-22-21-44_resized](https://github.com/user-attachments/assets/f5b96147-00d5-41e4-8dce-35fc60c71263)
 
-![Storage](https://github.com/lopestom/twrp_device_IIIF150_B2_Ultra/)
 </p>
 </details>
 
